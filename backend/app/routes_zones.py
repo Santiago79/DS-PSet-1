@@ -30,3 +30,24 @@ async def get_zone(id: int):
     if id not in zones_db:
         raise HTTPException(status_code=404, detail="Zone not found") 
     return zones_db[id]
+
+@router.put("/{id}", response_model=ZoneResponse)
+async def update_zone(id: int, zone_update: ZoneUpdate):
+    if id not in zones_db:
+        raise HTTPException(status_code=404, detail="Zone not found")
+    
+    stored_zone = zones_db[id]
+    update_data = zone_update.model_dump(exclude_unset=True)
+    
+    for key, value in update_data.items():
+        stored_zone[key] = value
+        
+    zones_db[id] = stored_zone
+    return stored_zone
+
+@router.delete("/{id}", status_code=204)
+async def delete_zone(id: int):
+    if id not in zones_db:
+        raise HTTPException(status_code=404, detail="Zone not found")
+    del zones_db[id]
+    return None
