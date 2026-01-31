@@ -103,16 +103,22 @@ st.markdown("### 📱 Navegación")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    if st.button("🗺️ Zonas", use_container_width=True):
-        st.switch_page("pages/1_Zones.py")
+    st.page_link("pages/1_zones.py", 
+                 label="Zonas", 
+                 icon="🗺️",
+                 use_container_width=True)
     st.caption("Gestionar zonas")
 
 with col2:
-    if st.button("🚕 Rutas", use_container_width=True):
-        st.switch_page("pages/2_Routes.py")
+    st.page_link("pages/2_routes.py", 
+                 label="Rutas", 
+                 icon="🚕",
+                 use_container_width=True)
     st.caption("Administrar rutas")
 
 with col3:
-    if st.button("📤 Cargar Datos", use_container_width=True):
-        st.switch_page("pages/3_Upload_Parquet.py")
+    st.page_link("pages/3_upload_parquet.py", 
+                 label="Cargar Datos", 
+                 icon="📤",
+                 use_container_width=True)
     st.caption("Subir .parquet")
