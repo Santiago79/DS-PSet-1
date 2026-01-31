@@ -4,13 +4,13 @@ import os
 
 st.title("Demand Prediction Service")
 
-# URL del backend configurada para Docker 
+# URL del backend para Docker 
 api_url = os.getenv("API_URL", "http://localhost:8000")
 
 try:
     response = requests.get(f"{api_url}/health")
     if response.status_code == 200:
-        st.success(f"Backend Status: {response.json()['status']}") # [cite: 88]
+        st.success(f"Backend Status: {response.json()['status']}")
     else:
         st.error("Backend is down")
 except Exception as e:

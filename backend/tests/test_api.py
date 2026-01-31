@@ -4,13 +4,11 @@ from app.main import app
 
 client = TestClient(app)
 
-# --- TESTS DE HEALTH (1) ---
 def test_health():
     response = client.get("/health")
     assert response.status_code == 200
     assert response.json() == {"status": "ok"}
 
-# --- TESTS DE ZONES ---
 def test_create_zone():
     payload = {
         "id": 10,
@@ -25,7 +23,7 @@ def test_create_zone():
 def test_create_zone_duplicate():
     payload = {"id": 10, "borough": "X", "zone_name": "Y"}
     response = client.post("/zones/", json=payload)
-    assert response.status_code == 400 # Error por ID duplicado
+    assert response.status_code == 400
 
 def test_get_zone():
     response = client.get("/zones/10")
@@ -48,7 +46,7 @@ def test_delete_zone():
     # Verificar que ya no existe
     assert client.get("/zones/10").status_code == 404
 
-# --- TEST DE RELLENO PARA COMPLETAR 8 (esto es para la persona 2) ---
+#TEST DE RELLENO (para la persona 2)
 def test_list_zones_empty():
     response = client.get("/zones/")
     assert response.status_code == 200
