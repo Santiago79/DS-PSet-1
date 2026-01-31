@@ -116,4 +116,3 @@ with col3:
     if st.button("📤 Cargar Datos", use_container_width=True):
         st.switch_page("pages/3_Upload_Parquet.py")
     st.caption("Subir .parquet")
-
