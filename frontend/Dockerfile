@@ -14,7 +14,7 @@ COPY app/ ./app/
 EXPOSE 8501
 
 # Comando para ejecutar
-CMD ["streamlit", "run", "app/Home.py", \
+CMD ["streamlit", "run", "app/home.py", \
      "--server.address=0.0.0.0", \
      "--server.port=8501", \
      "--server.enableCORS=false", \
