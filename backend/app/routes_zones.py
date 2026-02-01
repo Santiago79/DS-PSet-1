@@ -3,6 +3,7 @@ from typing import List, Optional
 from .schemas import ZoneCreate, ZoneUpdate, ZoneResponse
 from .storage import zones_db
 
+# Configuración del router con prefijo y etiquetas 
 router = APIRouter(prefix="/zones", tags=["Zones"])
 
 @router.post("/", response_model=ZoneResponse, status_code=201)
@@ -12,15 +13,19 @@ async def create_zone(zone: ZoneCreate):
     
     from datetime import datetime
     new_zone = zone.model_dump()
+    # Asignar la marca de tiempo de creación en el servidor
     new_zone["created_at"] = datetime.now()
+    # Guardar
     zones_db[zone.id] = new_zone
     return new_zone
 
 @router.get("/", response_model=List[ZoneResponse])
 async def list_zones(active: Optional[bool] = None, borough: Optional[str] = None):
     results = list(zones_db.values())
+    # Filtrado lógico por estado activo/inactivo
     if active is not None:
         results = [z for z in results if z["active"] == active]
+    # Filtrado por coincidencia parcial de texto en el municipio
     if borough:
         results = [z for z in results if borough.lower() in z["borough"].lower()]
     return results
