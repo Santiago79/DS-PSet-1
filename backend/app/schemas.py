@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 
 class ZoneBase(BaseModel):
     borough: str = Field(..., min_length=1)
@@ -39,3 +39,13 @@ class RouteUpdate(BaseModel):
 class RouteResponse(RouteBase):
     id: int
     created_at: datetime
+
+class TripsParquetUploadResult(BaseModel):
+    file_name: str
+    rows_read: int
+    zones_created: int
+    zones_updated: int
+    routes_detected: int
+    routes_created: int
+    routes_updated: int
+    errors: List[str] = []
