@@ -15,4 +15,4 @@ services:
       - API_URL=http://api:8000
     depends_on:
       - api
-    command: streamlit run app/Home.py --server.address 0.0.0.0
+    command: streamlit run app/home.py --server.address 0.0.0.0
