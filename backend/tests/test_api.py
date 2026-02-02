@@ -174,8 +174,7 @@ def test_upload_parquet_zones_full_logic():
     
     files_new = {"file": ("new_data.parquet", buffer_new, "application/octet-stream")}
     payload_create = {"mode": "create"}
-    
-    # URL CORRECTA
+
     response_new = client.post("/uploads/trips-parquet", files=files_new, data=payload_create)
     
     assert response_new.status_code == 200
@@ -183,8 +182,7 @@ def test_upload_parquet_zones_full_logic():
     assert summary_new["zones_created"] >= 2
     assert summary_new["rows_read"] == 2
 
-    # --- PARTE B: PROBAR ACTUALIZACIÓN ---
-    # Usamos los mismos datos pero con mode="update"
+    # PROBAR ACTUALIZACIÓN
     buffer_update = io.BytesIO()
     df_new.to_parquet(buffer_update, engine='pyarrow')
     buffer_update.seek(0)
@@ -192,13 +190,11 @@ def test_upload_parquet_zones_full_logic():
     files_update = {"file": ("update_data.parquet", buffer_update, "application/octet-stream")}
     payload_update = {"mode": "update"}
     
-    # URL CORRECTA OTRA VEZ
     response_update = client.post("/uploads/trips-parquet", files=files_update, data=payload_update)
     
     assert response_update.status_code == 200
     summary_update = response_update.json()
     
-    # USAR LAS LLAVES CORRECTAS: zones_updated o routes_updated
     assert "zones_updated" in summary_update
     assert summary_update["zones_updated"] >= 2
 
