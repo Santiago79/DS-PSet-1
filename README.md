@@ -3,7 +3,11 @@
 
 Este sistema permite gestionar zonas y rutas de transporte.
 
-## Instrucciones de Uso
+## Funcionamiento
+
+Este proyecto es una plataforma de gestión de datos de transporte orquestada con Docker Compose, donde un Backend (FastAPI) y un Frontend (Streamlit) se integran para procesar y administrar rutas urbanas. El sistema permite realizar cargas masivas de archivos Parquet mediante un flujo ETL que filtra las rutas más frecuentes, garantiza la integridad de los datos creando zonas automáticamente y ofrece una interfaz completa para el control de registros (CRUD) bajo reglas de validación de negocio.
+
+## Instrucciones de Uso y despliegue
 
 | Accion | Comando |
 | :--- | :--- |
@@ -29,13 +33,13 @@ Este sistema permite gestionar zonas y rutas de transporte.
 ---
 
 ## Checklist de Requisitos (V hecho, F no hecho) 
-* [ ] Docker Compose levanta api y app correctamente.
-* [ ] Home muestra health del backend y navegacion. 
-* [ ] CRUD Zones funciona completo desde la UI. 
-* [ ] CRUD Routes funciona completo desde la UI. 
-* [ ] Upload parquet procesa y hace create/update via endpoints. 
-* [ ] README explica funcionamiento y despliegue. 
-* [ ] Evidencia en GitHub (issues/PR/tags) disponible.
+* [V] Docker Compose levanta api y app correctamente.
+* [V] Home muestra health del backend y navegacion. 
+* [V] CRUD Zones funciona completo desde la UI. 
+* [V] CRUD Routes funciona completo desde la UI. 
+* [V] Upload parquet procesa y hace create/update via endpoints. 
+* [V] README explica funcionamiento y despliegue. 
+* [V] Evidencia en GitHub (issues/PR/tags) disponible.
 
 ---
 
