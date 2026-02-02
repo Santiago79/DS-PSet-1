@@ -3,7 +3,7 @@
 zones_db = {}
 
 # Diccionario para almacenar las rutas
-# Formato: {id_ruta (int/uuid): objeto_route (dict)}
+# Formato: {id_ruta (int): objeto_route (dict)}
 routes_db = {}
 
 # Contador opcional para generar IDs de rutas

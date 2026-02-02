@@ -21,12 +21,19 @@ except:
 st.subheader("Configuración de Ingesta")
 
 with st.container():
-    col1, col2, col3 = st.columns([2, 1, 1])
+    col1, col2, col3, col4 = st.columns([2, 1, 1, 1])
     with col1:
         uploaded_file = st.file_uploader("Selecciona un archivo .parquet", type=["parquet"])
     with col2:
-        top_n = st.number_input("Top N rutas", min_value=1, max_value=200, value=50)
+        limit_rows = st.number_input("Límite filas", 
+                                     min_value=1000, 
+                                     max_value=200000, 
+                                     value=50000, 
+                                     step=1000,
+                                     help="Máximo de filas a procesar (default: 50,000)")
     with col3:
+        top_n = st.number_input("Top N rutas", min_value=1, max_value=200, value=50)
+    with col4:
         mode = st.selectbox("Modo", options=["create", "update"])
 
 if st.button("Iniciar Procesamiento", type="primary", use_container_width=True):
@@ -53,20 +60,22 @@ if st.button("Iniciar Procesamiento", type="primary", use_container_width=True):
                     st.markdown("---")
                     st.subheader("Resumen de la Operación")
                     
-                    m1, m2, m3, m4 = st.columns(4)
+                    m1, m2, m3, m4, m5 = st.columns(5)
                     with m1:
-                        # 'rows_read' viene de tu backend: rows_read = len(df)
+                        # 'rows_read' viene del backend: rows_read = len(df)
                         st.metric("Filas Leídas", f"{data.get('rows_read', 0):,}")
-                    
                     with m2:
+                        st.metric("Rutas Detectadas", data.get("routes_detected", 0))
+
+                    with m3:
                         # Rutas nuevas creadas
                         st.metric("Rutas Creadas", data.get("routes_created", 0))
                     
-                    with m3:
+                    with m4:
                         # Rutas que ya existían y se activaron
                         st.metric("Rutas Actualizadas", data.get("routes_updated", 0))
                     
-                    with m4:
+                    with m5:
                         # Conteo de la lista de errores
                         error_list = data.get("errors", [])
                         st.metric("Errores", len(error_list))
