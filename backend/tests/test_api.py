@@ -1,3 +1,6 @@
+import pandas as pd
+import io
+import pytest
 from fastapi.testclient import TestClient
 from app.main import app
 
@@ -154,3 +157,46 @@ def test_delete_route():
     
     # Verificar que ya no existe
     assert client.get(f"/routes/{route_id}").status_code == 404
+
+#TESTS PARQUET
+
+def test_upload_parquet_zones_full_logic():
+    # PROBAR CREACIÓN
+    data_new = {
+        "PULocationID": [500, 501],
+        "DOLocationID": [600, 601]
+    }
+    df_new = pd.DataFrame(data_new)
+    
+    buffer_new = io.BytesIO()
+    df_new.to_parquet(buffer_new, engine='pyarrow')
+    buffer_new.seek(0)
+    
+    files_new = {"file": ("new_data.parquet", buffer_new, "application/octet-stream")}
+    payload_create = {"mode": "create"}
+
+    response_new = client.post("/uploads/trips-parquet", files=files_new, data=payload_create)
+    
+    assert response_new.status_code == 200
+    summary_new = response_new.json()
+    assert summary_new["zones_created"] >= 2
+    assert summary_new["rows_read"] == 2
+
+    # PROBAR ACTUALIZACIÓN
+    buffer_update = io.BytesIO()
+    df_new.to_parquet(buffer_update, engine='pyarrow')
+    buffer_update.seek(0)
+    
+    files_update = {"file": ("update_data.parquet", buffer_update, "application/octet-stream")}
+    payload_update = {"mode": "update"}
+    
+    response_update = client.post("/uploads/trips-parquet", files=files_update, data=payload_update)
+    
+    assert response_update.status_code == 200
+    summary_update = response_update.json()
+    
+    assert "zones_updated" in summary_update
+    assert summary_update["zones_updated"] >= 2
+
+    print(f"\nResumen de creación: {response_new.json()}")
+    print(f"\nResumen de actualización: {response_update.json()}")
