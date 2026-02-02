@@ -43,7 +43,31 @@ Cada miembro del equipo es responsable de elegir y subir las capturas o logs que
 
 ### Persona 3: Frontend de Zonas
 *Espacio reservado para evidencias de: Interfaz de usuario en Streamlit, navegación de la app, formularios de gestión de zonas y manejo de alertas/errores.*
-
+**Wireframe Frontend:**
+![Wireframe Home](evidence_images/wireframe_home.png)
+![Wireframe Zonas](evidence_images/wireframe_zonas.png)
+![Wireframe Rutas](evidence_images/wireframe_rutas.png)
+![Wireframe Parquet](evidence_images/wireframe_parquet.png)
+**Capturas de Pantalla Frontend:** 
+Home
+![Frontend Home](evidence_images/frontend_home.png)
+Zonas
+![Frontend Buscar Zona](evidence_images/frontend_buscarzonas.png)
+![Frontend Crear Zona](evidence_images/frontend_crearzona.png)
+![Frontend Editar Zona](evidence_images/frontend_editarzona.png)
+![Frontend Eliminar Zona](evidence_images/frontend_eliminarzona.png)
+Rutas
+![Frontend Buscar Ruta](evidence_images/frontend_buscarrutas.png)
+![Frontend Crear Ruta](evidence_images/frontend_crearruta.png)
+![Frontend Editar Ruta](evidence_images/frontend_editarruta.png)
+![Frontend Eliminar Ruta](evidence_images/frontend_eliminarruta.png)
+Parquet
+![Frontend Parquet](evidence_images/frontend_parquet.png)
+![Frontend Parquet Subido](evidence_images/frontend_parquet_subido.png)
+**Capturas Manejo de Errores Frontend:** 
+![Error Campos Vacios](evidence_images/frontend_errorvacios.png)
+![Error Origen Destino Igual](evidence_images/frontend_error_origendestino.png)
+![Error Longitud Input](evidence_images/frontend_error_longitud.png)
 ---
 
 ### Persona 4: DevOps y Carga Masiva (Parquet)
