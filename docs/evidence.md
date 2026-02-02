@@ -30,7 +30,23 @@ Cada miembro del equipo es responsable de elegir y subir las capturas o logs que
 ---
 
 ### Persona 2: Backend de Rutas
-*Espacio reservado para evidencias de: Validación de integridad de rutas (pickup/dropoff), filtros de búsqueda y lógica de negocio.*
+
+**Testing de Health**
+![Postman Health GET](evidence_images/health_GET.png)
+
+**Testing de Endpoints para Routes:**
+![Postman Routes GET 1](evidence_images/routes_GET.png)
+![Postman Routes GET 2](evidence_images/routes:1_GET.png)
+![Postman Routes POST](evidence_images/routes_POST.png)
+![Postman Routes PUT](evidence_images/routes:1_PUT.png)
+![Postman Routes DELETE](evidence_images/routes:1_DELETE.png)
+
+**Testing de Parquet Uploads:**
+![Postman Uploads Parquet GET 1](evidence_images/uploads:trips-parquet_POST-create.png)
+![Postman Uploads Parquet GET 2](evidence_images/uploads:trips-parquet_POST-update.png)
+
+**Schemas para Validaciones y Routes:**
+![Schemas](evidence_images/Schemas_Validaciones-Routes-Uploads.png)
 
 ---
 
