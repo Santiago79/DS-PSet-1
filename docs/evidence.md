@@ -26,7 +26,14 @@ Cada miembro del equipo es responsable de elegir y subir las capturas o logs que
 
 ### Persona 1: Backend de Zonas
 *Espacio reservado para evidencias de: CRUD de zonas, Schemas de validación y resultados de tests unitarios.*
-
+![Creación del esquema base del proyecto](evidence_images/estructuraBaseProyecto.png)
+![Comprobar funcionamiento de backend con postman](evidence_images/postman.png)
+![Actualizar por medio de postman una zona](evidence_images/postmanPUTreal.png)
+![Verificar que la actualización de postman se ve en la página web](evidence_images/verificacionPostmanEnPagina.png)
+![Tests correctos y sin errores al correrlos en consola](evidence_images/testsCorrectos.png)
+![Datos sobre los tests ejecutados en consola](evidence_images/outputTestsParquet.png)
+![Muestra de datos de zonas del parquet en la pagina web](evidence_images/listaPostParquetZones.png)
+![Muestra de datos de routes del parquet en la pagina web](evidence_images/listaPostParquetRoutes.png)
 ---
 
 ### Persona 2: Backend de Rutas
