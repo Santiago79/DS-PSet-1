@@ -1,5 +1,5 @@
 # Demand Prediction Service - PSet 01
-# Integrantes: Maria Emilia, Santiago Reategui, Raymond Portilla, Liam Huang
+# Integrantes: Maria Emilia Cueva, Santiago Reategui, Raymond Portilla, Liam Huang
 
 Este sistema permite gestionar zonas y rutas de transporte.
 
