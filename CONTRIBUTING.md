@@ -16,31 +16,30 @@ Nuestra organizacion se basa en tres cosas:
 
 El proyecto se dividio en cuatro areas de responsabilidad para cubrir todo el flujo de datos:
 
-### Persona 1: Backend de Zonas
+### Persona 1 (Santiago Reategui): Backend de Zonas
 Responsable de la logica central de ubicaciones:
 * Implementacion de CRUD completo para `/zones` (POST, GET, PUT, DELETE).
 * Creacion de filtros para las consultas de zonas.
 * Definicion de Schemas de validacion: `ZoneCreate` y `ZoneUpdate`.
 * Ejecucion y mantenimiento de los tests de zonas.
 
-### Persona 2: Backend de Rutas
+### Persona 2 (Raymond Portilla): Backend de Rutas
 Responsable de la logica de trayectos y validaciones de negocio:
 * Endpoints de `/routes` con filtros y CRUD.
 * Validacion de integridad: asegurar que el `pickup_zone_id` existe antes de crear la ruta.
 * Validacion de logica: impedir que el origen y el destino sean iguales (`pickup != dropoff`).
 * Creacion de tests especificos para rutas.
 
-### Persona 3: Frontend de Zonas
+### Persona 3 (Maria Emilia Cueva): Frontend de Zonas
 Responsable de la experiencia de usuario y navegacion inicial:
 * Configuracion de `Home.py` y el sistema de navegacion en Streamlit.
-* Interfaz de usuario (UI) completa para la gestion de zonas.
+* Interfaz de usuario (UI) completa para la gestion de zonas y rutas
 * Gestion de estados de error en la interfaz para informar al usuario.
 * Implementacion de las peticiones HTTP desde el frontend hacia el backend.
 
-### Persona 4: DevOps y Carga Masiva (Parquet)
+### Persona 4 (Liam Huang): DevOps y Carga Masiva (Parquet)
 Responsable de la infraestructura, integracion y despliegue:
 * Configuracion y mantenimiento de `docker-compose.yml` y los `Dockerfiles`.
-* Desarrollo de la interfaz de Rutas en el frontend.
 * Implementacion del proceso de ingesta: endpoint `POST /uploads/trips-parquet`.
 * Creacion de la pagina de carga de archivos Parquet en Streamlit con resumen de resultados.
 * Redaccion del `README.md`, `CONTRIBUTING.MD` del proyecto.
